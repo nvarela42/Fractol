@@ -13,11 +13,12 @@ DIRMLX		=	minilibx
 
 HDR			=	$(DIR)/$(DIR).a
 
-SRC			= main.c							\
-				ft_parser.c						\
-				ft_init_glob_struct.c	\
+SRC			= main.c						\
+				ft_parser.c					\
+				ft_init_glob_struct.c		\
 				ft_julia_fract.c			\
-				ft_put_pixel_to_image	\
+				ft_put_pixel_to_image.c		\
+				ft_mandel_fract.c			\
 
 OBJ			=	$(patsubst %.c,srcs/%.o,$(SRC))
 
