@@ -6,7 +6,7 @@
 /*   By: nvarela <nvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/29 18:04:56 by nvarela           #+#    #+#             */
-/*   Updated: 2017/08/31 16:59:25 by nvarela          ###   ########.fr       */
+/*   Updated: 2017/08/31 18:49:28 by nvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,9 @@ void			ft_julia_fract(t_fract *fract)
 	"FRACTOL");
 	ft_julia_image(fract);
 	mlx_put_image_to_window(fract->mlx, fract->win, fract->image, 0, 0);
+	// mlx_hook(fract->win, 17, 0, /*quit_cross*/, fract);
+	// mlx_hook(fract->win, 6, (1L << 6), /*mlx_mouse_pos_julia*/, fract);
+	// mlx_key_hook(fract->win, /*my_key_func*/, fract);
+	// mlx_mouse_hook(fract->win, /*mlx_mouse_misc_julia*/, fract);
 	mlx_loop(fract->mlx);
 }

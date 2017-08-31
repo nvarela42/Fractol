@@ -6,7 +6,7 @@
 /*   By: nvarela <nvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/31 15:06:25 by nvarela           #+#    #+#             */
-/*   Updated: 2017/08/31 18:03:48 by nvarela          ###   ########.fr       */
+/*   Updated: 2017/08/31 18:45:13 by nvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,8 @@ static void		ft_mand_image(t_fract *fract)
 		* fract->mand.zoom;
 	fract->mand.y_image = (fract->mand.y_two - fract->mand.y_one)
 		* fract->mand.zoom;
-	printf("OK - 0\n");
 	fract->image = mlx_new_image(fract->mlx, fract->mand.x_image + 1,
 		fract->mand.y_image + 1);
-	printf("OK - 1\n");
 	fract->imgchar =  mlx_get_data_addr(fract->image, &(fract->mlximgbpp),
  		&(fract->mlximgsize), &(fract->mlximgendian));
 	ft_mand_search_z_point(fract, &(fract->mand));
@@ -100,5 +98,8 @@ void			ft_mandel_fract(t_fract *fract)
 		"FRACTOL");
 	ft_mand_image(fract);
 	mlx_put_image_to_window(fract->mlx, fract->win, fract->image, 0, 0);
+	// mlx_hook(fract->win, 17, 0, /*quit_cross*/, fract);
+	// mlx_key_hook(fract->win, /*my_key_func*/, fract);
+	// mlx_mouse_hook(fract->win, /*mlx_mouse_misc_mend*/, fract);
 	mlx_loop(fract->mlx);
 }
