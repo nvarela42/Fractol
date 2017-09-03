@@ -8,8 +8,22 @@
 # include <errno.h>
 
 # ifdef __linux
+#  define ESCAPEKEY 65307
+#  define UPKEY 65362
+#  define DOWNKEY 65364
+#  define LEFTKEY 65361
+#  define RIGHTKEY 65363
 # else
+#  define ESCAPEKEY 53
+#  define UPKEY 126
+#  define DOWNKEY 125
+#  define LEFTKEY 123
+#  define RIGHTKEY 124
 # endif
+
+# define ZOOMPLUS 4
+# define ZOOMMINUS 5
+# define RIGHTCLICK 1
 
 typedef struct s_fract	t_fract;
 typedef struct s_julia	t_julia;
@@ -76,5 +90,7 @@ void					ft_put_pixel_to_image(t_fract *fract, int x, int y,
 						int color);
 int						ft_search_rgb(int r, int g, int b);
 void					ft_mandel_fract(t_fract *fract);
+void					ft_julia_mouse_position(int x, int y, void *param);
+void					ft_julia_mouse_button(int button, int x, int y, void *param);
 
 #endif
