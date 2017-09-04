@@ -98,8 +98,8 @@ void			ft_mandel_fract(t_fract *fract)
 		"FRACTOL");
 	ft_mand_image(fract);
 	mlx_put_image_to_window(fract->mlx, fract->win, fract->image, 0, 0);
-	// mlx_hook(fract->win, 17, 0, /*quit_cross*/, fract);
-	// mlx_key_hook(fract->win, /*my_key_func*/, fract);
-	// mlx_mouse_hook(fract->win, /*mlx_mouse_misc_mend*/, fract);
+	// mlx_hook(fract->win, 17, 0, quit_cross, fract);
+	 mlx_key_hook(fract->win,ft_escape_key, fract);
+	// mlx_mouse_hook(fract->win, mlx_mouse_misc_mend, fract);
 	mlx_loop(fract->mlx);
 }

@@ -35,7 +35,7 @@ static void		ft_julia_zoom(int x, int y, t_julia *jul)
 	if (x >= 0 && x <= 200 && y >= 180 && y <= 320)
 		jul->x_one -= 0.03;
 	if (x <= 500 && x >= 400 && y >= 220 && y <= 350)
-		jul->x_one += 0.03
+		jul->x_one += 0.03;
 	if (x <= 250 && y < 180)
 	{
 		jul->x_one -= 0.03;
@@ -44,7 +44,7 @@ static void		ft_julia_zoom(int x, int y, t_julia *jul)
 	else if (x > 250 && y < 180)
 	{
 		jul->x_one += 0.03;
-		jul->y_one -= 0.03
+		jul->y_one -= 0.03;
 	}
 	else if (x > 250 && y > 320)
 	{
@@ -58,11 +58,11 @@ static void		ft_julia_zoom(int x, int y, t_julia *jul)
 	}
 }
 
-void			ft_julia_mouse_button(int button, int x, int y, void *param)
+int				ft_julia_mouse_button(int button, int x, int y, void *param)
 {
 	t_fract		*fract;
 
-	fract = (t_fract *param);
+	fract = (t_fract *)param;
 	if (button == ZOOMPLUS)
 		ft_julia_zoom(x, y, &(fract->julia));
 	else if (button == ZOOMMINUS)
@@ -80,11 +80,11 @@ void			ft_julia_mouse_button(int button, int x, int y, void *param)
 	mlx_destroy_image(fract->mlx, fract->image);
 	mlx_clear_window(fract->mlx, fract->win);
 	ft_julia_image(fract);
-	mlx_put_image_to_window(fract->mlx, fract->win, frcat->image, 0, 0);
+	mlx_put_image_to_window(fract->mlx, fract->win, fract->image, 0, 0);
 	return (0);
 }
 
-void			ft_julia_mouse_position(int x, int y, void *param)
+int				ft_julia_mouse_position(int x, int y, void *param)
 {
 	t_fract		*fract;
 

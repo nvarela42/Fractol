@@ -20,6 +20,7 @@ SRC			= main.c					\
 			ft_put_pixel_to_image.c		\
 			ft_mandel_fract.c			\
 			ft_julia_mouse_events.c		\
+			ft_key_fonction.c			\
 
 OBJ			=	$(patsubst %.c,srcs/%.o,$(SRC))
 
