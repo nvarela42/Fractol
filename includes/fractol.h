@@ -90,9 +90,14 @@ void					ft_put_pixel_to_image(t_fract *fract, int x, int y,
 						int color);
 int						ft_search_rgb(int r, int g, int b);
 void					ft_mandel_fract(t_fract *fract);
+void 					ft_mandel_image(t_fract *fract);
 int						ft_julia_mouse_position(int x, int y, void *param);
-int						ft_julia_mouse_button(int button, int x, int y, void *param);
+int						ft_julia_mouse_button(int button, int x, int y,
+						void *param);
 void					ft_julia_image(t_fract *fract);
 int						ft_escape_key(int keycode, void *param);
+int						ft_mandel_mouse_position(int x, int y, void *param);
+int						ft_mandel_mouse_button(int button, int x, int y,
+						void *param);
 
 #endif

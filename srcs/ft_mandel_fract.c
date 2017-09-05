@@ -69,7 +69,7 @@ static void		ft_mand_search_z_point(t_fract *fract, t_mand *mand)
 	}
 }
 
-static void		ft_mand_image(t_fract *fract)
+void			ft_mandel_image(t_fract *fract)
 {
 	fract->mand.iter_max = 400;
 	fract->mand.x_image = (fract->mand.x_two - fract->mand.x_one)
@@ -96,10 +96,11 @@ void			ft_mandel_fract(t_fract *fract)
 	fract->mlx = mlx_init();
 	fract->win = mlx_new_window(fract->mlx, fract->x_sizewin, fract->y_sizewin,
 		"FRACTOL");
-	ft_mand_image(fract);
+	ft_mandel_image(fract);
 	mlx_put_image_to_window(fract->mlx, fract->win, fract->image, 0, 0);
 	// mlx_hook(fract->win, 17, 0, quit_cross, fract);
-	 mlx_key_hook(fract->win,ft_escape_key, fract);
-	// mlx_mouse_hook(fract->win, mlx_mouse_misc_mend, fract);
+	mlx_hook(fract->win, 6, (1L << 6), ft_mandel_mouse_position, fract);
+	mlx_key_hook(fract->win,ft_escape_key, fract);
+	mlx_mouse_hook(fract->win, ft_julia_mouse_button, fract);
 	mlx_loop(fract->mlx);
 }
