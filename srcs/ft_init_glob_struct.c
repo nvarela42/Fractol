@@ -6,7 +6,7 @@
 /*   By: nvarela <nvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/29 18:04:38 by nvarela           #+#    #+#             */
-/*   Updated: 2017/08/31 16:46:23 by nvarela          ###   ########.fr       */
+/*   Updated: 2017/09/12 16:54:28 by nvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static void			ft_fill_struct(t_fract *fract)
 
 t_fract				*ft_init_glob_struct(void)
 {
-	static t_fract  *fract = NULL;
-	static int      check = 0;
+	static t_fract	*fract = NULL;
+	static int		check = 0;
 
 	if (fract == NULL && check == 0)
 	{

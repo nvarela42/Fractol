@@ -16,7 +16,7 @@ char			*ft_strrev(char *str)
 {
 	int			i;
 	int			len;
-	char 		tmp;
+	char		tmp;
 
 	len = ft_strlen(str) - 1;
 	i = 0;
@@ -28,13 +28,5 @@ char			*ft_strrev(char *str)
 		i++;
 		len--;
 	}
-	return(str);
-}
-
-int main ()
-{
- 	char *env =  "bonjour";
-	char *ret = ft_strrev(env);
- 	printf("%s\n", ret);
- 	return (0);
+	return (str);
 }

@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sort_double_tab.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nvarela <nvarela@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/28 16:36:45 by nvarela           #+#    #+#             */
+/*   Updated: 2017/08/28 16:36:50 by nvarela          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static char		**ft_sort_rev(char **tab)
 {
-	char   *tmp1;
-	char   *tmp2;
-	int    i;
-	int    j;
+	char		*tmp1;
+	char		*tmp2;
+	int			i;
+	int			j;
 
 	i = 0;
 	while (tab[i])
@@ -30,10 +42,10 @@ static char		**ft_sort_rev(char **tab)
 
 static char		**ft_sort_by_alpha(char **tab)
 {
-	char   *tmp1;
-	char   *tmp2;
-	int    i;
-	int    j;
+	char		*tmp1;
+	char		*tmp2;
+	int			i;
+	int			j;
 
 	i = 0;
 	while (tab[i])
@@ -53,12 +65,11 @@ static char		**ft_sort_by_alpha(char **tab)
 		}
 		i++;
 	}
-	return(tab);
+	return (tab);
 }
 
-char      **ft_sort_double_tab(char **tab, int type)
+char			**ft_sort_double_tab(char **tab, int type)
 {
-
 	if (type == 1)
 		tab = ft_sort_by_alpha(tab);
 	if (type == 2)

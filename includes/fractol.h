@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nvarela <nvarela@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/12 15:38:58 by nvarela           #+#    #+#             */
+/*   Updated: 2017/09/12 18:58:27 by nvarela          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
@@ -22,6 +34,8 @@
 # endif
 
 # define ZOOMPLUS 4
+# define KEYPLUS 69
+# define KEYMINUS 78
 # define ZOOMMINUS 5
 # define RIGHTCLICK 1
 
@@ -31,7 +45,7 @@ typedef struct s_mand	t_mand;
 
 struct					s_julia
 {
-double					x_one;
+	double				x_one;
 	double				x_two;
 	double				y_one;
 	double				y_two;
@@ -47,7 +61,7 @@ double					x_one;
 	int					block;
 };
 
- struct					s_mand
+struct					s_mand
 {
 	double				x_one;
 	double				x_two;
@@ -90,14 +104,19 @@ void					ft_put_pixel_to_image(t_fract *fract, int x, int y,
 						int color);
 int						ft_search_rgb(int r, int g, int b);
 void					ft_mandel_fract(t_fract *fract);
-void 					ft_mandel_image(t_fract *fract);
+void					ft_mandel_image(t_fract *fract);
 int						ft_julia_mouse_position(int x, int y, void *param);
 int						ft_julia_mouse_button(int button, int x, int y,
 						void *param);
 void					ft_julia_image(t_fract *fract);
-int						ft_escape_key(int keycode, void *param);
+int						ft_key_fonction(int keycode, void *param);
 int						ft_mandel_mouse_position(int x, int y, void *param);
 int						ft_mandel_mouse_button(int button, int x, int y,
 						void *param);
+int						quit_cross(t_fract *fract);
+void					ft_julia_dezoom(int x, int y, t_julia *jul);
+void					ft_julia_zoom(int x, int y, t_julia *jul);
+void					ft_mandel_zoom(int x, int y, t_mand *mand);
+void					ft_mandel_dezoom(int x, int y, t_mand *mand);
 
 #endif

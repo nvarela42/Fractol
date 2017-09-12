@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_julia_events.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nvarela <nvarela@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/12 15:39:57 by nvarela           #+#    #+#             */
+/*   Updated: 2017/09/12 18:48:33 by nvarela          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
-static void		ft_julia_dezoom(int x, int y, t_julia *jul)
+void			ft_julia_dezoom(int x, int y, t_julia *jul)
 {
 	jul->zoom -= 20;
 	if (x >= 0 && x <= 200 && y >= 180 && y <= 320)
@@ -29,7 +41,7 @@ static void		ft_julia_dezoom(int x, int y, t_julia *jul)
 	}
 }
 
-static void		ft_julia_zoom(int x, int y, t_julia *jul)
+void			ft_julia_zoom(int x, int y, t_julia *jul)
 {
 	jul->zoom += 20;
 	if (x >= 0 && x <= 200 && y >= 180 && y <= 320)
@@ -89,7 +101,8 @@ int				ft_julia_mouse_position(int x, int y, void *param)
 	t_fract		*fract;
 
 	fract = (t_fract *)param;
-	if(x < 0 || y < 0 || x > fract->x_sizewin || y > fract->y_sizewin || fract->julia.block == 1)
+	if (x < 0 || y < 0 || x > fract->x_sizewin || y > fract->y_sizewin ||
+		fract->julia.block == 1)
 		return (-1);
 	fract->julia.c_i = (double)x / 10000;
 	fract->julia.c_r = (double)y / 1000;

@@ -6,7 +6,7 @@
 /*   By: nvarela <nvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/29 18:05:07 by nvarela           #+#    #+#             */
-/*   Updated: 2017/08/29 18:05:09 by nvarela          ###   ########.fr       */
+/*   Updated: 2017/09/12 16:58:37 by nvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int			ft_parse_arg(char **av)
 		return (0);
 	else if (ft_strcmp(av[1], "burningship") == 0)
 		return (0);
-	return(-1);
+	return (-1);
 }
 
 static void			ft_usage(void)

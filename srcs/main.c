@@ -6,13 +6,13 @@
 /*   By: nvarela <nvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/29 18:05:54 by nvarela           #+#    #+#             */
-/*   Updated: 2017/08/31 18:05:01 by nvarela          ###   ########.fr       */
+/*   Updated: 2017/09/12 17:03:50 by nvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static void  ft_start_fractol(t_fract *fract, char **av)
+static void		ft_start_fractol(t_fract *fract, char **av)
 {
 	if (ft_strcmp(av[1], "julia") == 0)
 		ft_julia_fract(fract);
@@ -29,8 +29,7 @@ static void  ft_start_fractol(t_fract *fract, char **av)
 	return ;
 }
 
-
-int         main(int argc, char **argv)
+int				main(int argc, char **argv)
 {
 	if (ft_parser(argc, argv) == -1)
 		return (EXIT_FAILURE);

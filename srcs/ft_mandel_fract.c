@@ -6,7 +6,7 @@
 /*   By: nvarela <nvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/31 15:06:25 by nvarela           #+#    #+#             */
-/*   Updated: 2017/08/31 18:45:13 by nvarela          ###   ########.fr       */
+/*   Updated: 2017/09/12 18:31:44 by nvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void		ft_mand_putpix(t_fract *fract, t_mand *mand, int x, int y)
 			* 255 / mand->iter_max));
 }
 
-static void		ft_mand_cal_z_point(t_fract * fract, t_mand *mand, int x, int y)
+static void		ft_mand_cal_z_point(t_fract *fract, t_mand *mand, int x, int y)
 {
 	double		tmp;
 	double		stock;
@@ -53,6 +53,8 @@ static void		ft_mand_search_z_point(t_fract *fract, t_mand *mand)
 		y = 0;
 		while (y < mand->y_image)
 		{
+			if (mand->zoom == 0)
+				printf("zoom = 0\n");
 			mand->c_r = x / mand->zoom + mand->x_one;
 			mand->c_i = y / mand->zoom + mand->y_one;
 			mand->z_r = 0;
@@ -78,8 +80,8 @@ void			ft_mandel_image(t_fract *fract)
 		* fract->mand.zoom;
 	fract->image = mlx_new_image(fract->mlx, fract->mand.x_image + 1,
 		fract->mand.y_image + 1);
-	fract->imgchar =  mlx_get_data_addr(fract->image, &(fract->mlximgbpp),
- 		&(fract->mlximgsize), &(fract->mlximgendian));
+	fract->imgchar = mlx_get_data_addr(fract->image, &(fract->mlximgbpp),
+	&(fract->mlximgsize), &(fract->mlximgendian));
 	ft_mand_search_z_point(fract, &(fract->mand));
 }
 
@@ -98,9 +100,8 @@ void			ft_mandel_fract(t_fract *fract)
 		"FRACTOL");
 	ft_mandel_image(fract);
 	mlx_put_image_to_window(fract->mlx, fract->win, fract->image, 0, 0);
-	// mlx_hook(fract->win, 17, 0, quit_cross, fract);
-	mlx_hook(fract->win, 6, (1L << 6), ft_mandel_mouse_position, fract);
-	mlx_key_hook(fract->win,ft_escape_key, fract);
-	mlx_mouse_hook(fract->win, ft_julia_mouse_button, fract);
+	mlx_hook(fract->win, 17, 0, quit_cross, fract);
+	mlx_key_hook(fract->win, ft_key_fonction, fract);
+	mlx_mouse_hook(fract->win, ft_mandel_mouse_button, fract);
 	mlx_loop(fract->mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: nvarela <nvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/29 18:04:56 by nvarela           #+#    #+#             */
-/*   Updated: 2017/08/31 18:49:28 by nvarela          ###   ########.fr       */
+/*   Updated: 2017/09/12 18:31:07 by nvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,11 @@
 
 static void		ft_julia_putpix(t_fract *fract, t_julia *jul, int x, int y)
 {
-	(void) fract;
-	(void) x;
-	(void) y;
 	if (jul->i == jul->iter_max)
 		ft_put_pixel_to_image(fract, x, y, 0xFF6666);
 	else
 		ft_put_pixel_to_image(fract, x, y, ft_search_rgb(0, 0, jul->i
-		 * 255 / jul->iter_max ));
+		* 255 / jul->iter_max));
 }
 
 static void		ft_julia_cal_z_point(t_fract *fract, t_julia *jul, int x, int y)
@@ -51,7 +48,7 @@ static void		ft_julia_search_z_point(t_fract *fract, t_julia *jul)
 	int			y;
 
 	x = 0;
-	while(x < jul->x_image)
+	while (x < jul->x_image)
 	{
 		y = 0;
 		while (y < jul->y_image)
@@ -101,9 +98,9 @@ void			ft_julia_fract(t_fract *fract)
 	"FRACTOL");
 	ft_julia_image(fract);
 	mlx_put_image_to_window(fract->mlx, fract->win, fract->image, 0, 0);
-	// mlx_hook(fract->win, 17, 0, quit_cross, fract);
+	mlx_hook(fract->win, 17, 0, quit_cross, fract);
 	mlx_hook(fract->win, 6, (1L << 6), ft_julia_mouse_position, fract);
-	mlx_key_hook(fract->win, ft_escape_key, fract);
+	mlx_key_hook(fract->win, ft_key_fonction, fract);
 	mlx_mouse_hook(fract->win, ft_julia_mouse_button, fract);
 	mlx_loop(fract->mlx);
 }

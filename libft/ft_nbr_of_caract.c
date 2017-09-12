@@ -21,7 +21,7 @@ int				ft_nbr_of_caract(char *str, char c)
 	counter = 0;
 	while (str[i] != '\0')
 	{
-		if(str[i] == c)
+		if (str[i] == c)
 			counter++;
 		i++;
 	}
