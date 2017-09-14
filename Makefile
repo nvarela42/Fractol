@@ -33,11 +33,7 @@ CFLAGS1		=	$(WFLAGS) -I./includes/ -I./$(DIR) -I./$(DIRMLX)
 
 OFLAGS		=	 -g
 
-ifneq (, $(findstring linux, $(SYS)))
-	MLXFLAG		= -L./$(DIRMLX) -I./$(DIRMLX) -lmlx -lXext -lX11 -lm
-else
-	MLXFLAG		= -L/usr/local/lib/ -I/usr/local/include -lmlx -framework OpenGL -framework AppKit -lm
-endif
+MLXFLAG		= -L/usr/local/lib/ -I/usr/local/include -lmlx -framework OpenGL -framework AppKit -lm
 
 HDR			=	$(DIR)/$(DIR).a
 

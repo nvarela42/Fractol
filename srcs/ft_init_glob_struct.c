@@ -6,7 +6,7 @@
 /*   By: nvarela <nvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/29 18:04:38 by nvarela           #+#    #+#             */
-/*   Updated: 2017/09/12 16:54:28 by nvarela          ###   ########.fr       */
+/*   Updated: 2017/09/14 20:09:38 by nvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ static void			ft_fill_struct(t_fract *fract)
 	fract->win = NULL;
 	fract->image = NULL;
 	fract->imgchar = NULL;
-	fract->burn = 0;
+	fract->is_burn = 0;
+	fract->is_jul = 0;
+	fract->is_mand = 0;
+	fract->col = ft_lstco();
 }
 
 t_fract				*ft_init_glob_struct(void)

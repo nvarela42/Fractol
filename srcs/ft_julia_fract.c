@@ -6,7 +6,7 @@
 /*   By: nvarela <nvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/29 18:04:56 by nvarela           #+#    #+#             */
-/*   Updated: 2017/09/12 18:31:07 by nvarela          ###   ########.fr       */
+/*   Updated: 2017/09/14 20:54:04 by nvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,17 @@
 
 static void		ft_julia_putpix(t_fract *fract, t_julia *jul, int x, int y)
 {
+	int			col_slot;
+	t_color		color;
+
+	col_slot = (int)jul->i % TABCOLSIZE;
+	color = fract->col[col_slot];
 	if (jul->i == jul->iter_max)
-		ft_put_pixel_to_image(fract, x, y, 0xFF6666);
+		ft_put_pixel_to_image(fract, x, y, 0xFFFF00);
 	else
-		ft_put_pixel_to_image(fract, x, y, ft_search_rgb(0, 0, jul->i
-		* 255 / jul->iter_max));
+		// ft_put_pixel_to_image(fract, x, y, ft_search_rgb(0, 0, jul->i
+		// * 255 / jul->iter_max));
+		ft_put_pixel_to_image(fract, x, y, ft_search_rgb(jul->i * color.r / jul->iter_max, jul->i * color.g / jul->iter_max, jul->i * color.b / jul->iter_max));
 }
 
 static void		ft_julia_cal_z_point(t_fract *fract, t_julia *jul, int x, int y)
@@ -73,8 +79,8 @@ void			ft_julia_image(t_fract *fract)
 		* fract->julia.zoom;
 	fract->julia.y_image = (fract->julia.y_two - fract->julia.y_one)
 		* fract->julia.zoom;
-	fract->image = mlx_new_image(fract->mlx, fract->julia.x_image + 1,
-		fract->julia.y_image);
+	fract->image = mlx_new_image(fract->mlx, fract->x_sizewin,
+		fract->y_sizewin);
 	fract->imgchar = mlx_get_data_addr(fract->image, &(fract->mlximgbpp),
 		&(fract->mlximgsize), &(fract->mlximgendian));
 	ft_julia_search_z_point(fract, &(fract->julia));

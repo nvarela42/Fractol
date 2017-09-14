@@ -6,7 +6,7 @@
 /*   By: nvarela <nvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/31 15:06:25 by nvarela           #+#    #+#             */
-/*   Updated: 2017/09/12 18:31:44 by nvarela          ###   ########.fr       */
+/*   Updated: 2017/09/14 18:17:34 by nvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ static void		ft_mand_cal_z_point(t_fract *fract, t_mand *mand, int x, int y)
 	{
 		tmp = mand->z_r;
 		mand->z_r = mand->z_r * mand->z_r - mand->z_i * mand->z_i + mand->c_r;
-		if (fract->burn == 1)
+		if (fract->is_burn == 1)
 			mand->z_r = mand->z_r < 0 ? mand->z_r * -1 : mand->z_r;
 		mand->z_i = 2 * mand->z_i * tmp + mand->c_i;
-		if (fract->burn == 1)
+		if (fract->is_burn == 1)
 			mand->z_i = mand->z_i < 0 ? mand->z_i * -1 : mand->z_i;
 		mand->i = mand->i + 1;
 		stock = mand->z_r * mand->z_r + mand->z_i * mand->z_i;
@@ -78,8 +78,8 @@ void			ft_mandel_image(t_fract *fract)
 		* fract->mand.zoom;
 	fract->mand.y_image = (fract->mand.y_two - fract->mand.y_one)
 		* fract->mand.zoom;
-	fract->image = mlx_new_image(fract->mlx, fract->mand.x_image + 1,
-		fract->mand.y_image + 1);
+	fract->image = mlx_new_image(fract->mlx, fract->x_sizewin,
+		fract->y_sizewin);
 	fract->imgchar = mlx_get_data_addr(fract->image, &(fract->mlximgbpp),
 	&(fract->mlximgsize), &(fract->mlximgendian));
 	ft_mand_search_z_point(fract, &(fract->mand));

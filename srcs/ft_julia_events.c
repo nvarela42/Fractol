@@ -6,7 +6,7 @@
 /*   By: nvarela <nvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/12 15:39:57 by nvarela           #+#    #+#             */
-/*   Updated: 2017/09/12 18:48:33 by nvarela          ###   ########.fr       */
+/*   Updated: 2017/09/14 19:34:38 by nvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void			ft_julia_dezoom(int x, int y, t_julia *jul)
 {
-	jul->zoom -= 20;
+	jul->zoom *= 0.97;
 	if (x >= 0 && x <= 200 && y >= 180 && y <= 320)
 		jul->x_one += 0.03;
 	if (x <= 500 && x >= 400 && y >= 220 && y <= 350)
@@ -43,7 +43,7 @@ void			ft_julia_dezoom(int x, int y, t_julia *jul)
 
 void			ft_julia_zoom(int x, int y, t_julia *jul)
 {
-	jul->zoom += 20;
+	jul->zoom *= 1.05;
 	if (x >= 0 && x <= 200 && y >= 180 && y <= 320)
 		jul->x_one -= 0.03;
 	if (x <= 500 && x >= 400 && y >= 220 && y <= 350)
@@ -101,7 +101,7 @@ int				ft_julia_mouse_position(int x, int y, void *param)
 	t_fract		*fract;
 
 	fract = (t_fract *)param;
-	if (x < 0 || y < 0 || x > fract->x_sizewin || y > fract->y_sizewin ||
+	if (x < 0 || y < 0 || x >= fract->x_sizewin  || y >= fract->y_sizewin ||
 		fract->julia.block == 1)
 		return (-1);
 	fract->julia.c_i = (double)x / 10000;

@@ -6,7 +6,7 @@
 /*   By: nvarela <nvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/29 18:05:54 by nvarela           #+#    #+#             */
-/*   Updated: 2017/09/12 17:03:50 by nvarela          ###   ########.fr       */
+/*   Updated: 2017/09/14 18:15:10 by nvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,18 @@
 static void		ft_start_fractol(t_fract *fract, char **av)
 {
 	if (ft_strcmp(av[1], "julia") == 0)
+	{
+		fract->is_jul = 1;
 		ft_julia_fract(fract);
+	}
 	else if (ft_strcmp(av[1], "mandelbrot") == 0)
 	{
-		fract->burn = 0;
+		fract->is_mand = 1;
 		ft_mandel_fract(fract);
 	}
 	else if (ft_strcmp(av[1], "burningship") == 0)
 	{
-		fract->burn = 1;
+		fract->is_burn = 1;
 		ft_mandel_fract(fract);
 	}
 	return ;

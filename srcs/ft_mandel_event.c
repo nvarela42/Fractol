@@ -6,7 +6,7 @@
 /*   By: nvarela <nvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/12 15:40:23 by nvarela           #+#    #+#             */
-/*   Updated: 2017/09/12 19:05:56 by nvarela          ###   ########.fr       */
+/*   Updated: 2017/09/14 19:29:41 by nvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void			ft_mandel_dezoom(int x, int y, t_mand *mand)
 {
-	mand->zoom -= 20;
+	mand->zoom *= 0.60;
 	if (x >= 0 && x <= 200 && y >= 180 && y <= 320)
 		mand->x_one += 0.05;
 	if (x <= 500 && x >= 400 && y >= 220 && y <= 350)
@@ -43,7 +43,7 @@ void			ft_mandel_dezoom(int x, int y, t_mand *mand)
 
 void			ft_mandel_zoom(int x, int y, t_mand *mand)
 {
-	mand->zoom += 20;
+	mand->zoom *= 2.05;
 	if (x >= 0 && x <= 200 && y >= 180 && y <= 320)
 		mand->x_one -= 0.05;
 	if (x <= 500 && x >= 400 && y >= 220 && y <= 350)
@@ -75,7 +75,6 @@ int				ft_mandel_mouse_button(int button, int x, int y, void *param)
 	t_fract		*fract;
 
 	fract = (t_fract *)param;
-	printf("button = %d\n", button);
 	if (button == ZOOMPLUS)
 		ft_mandel_zoom(x, y, &(fract->mand));
 	else if (button == ZOOMMINUS)

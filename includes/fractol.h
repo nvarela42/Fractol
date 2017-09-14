@@ -6,7 +6,7 @@
 /*   By: nvarela <nvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/12 15:38:58 by nvarela           #+#    #+#             */
-/*   Updated: 2017/09/12 18:58:27 by nvarela          ###   ########.fr       */
+/*   Updated: 2017/09/14 20:48:51 by nvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +19,22 @@
 # include <pthread.h>
 # include <errno.h>
 
-# ifdef __linux
-#  define ESCAPEKEY 65307
-#  define UPKEY 65362
-#  define DOWNKEY 65364
-#  define LEFTKEY 65361
-#  define RIGHTKEY 65363
-# else
-#  define ESCAPEKEY 53
-#  define UPKEY 126
-#  define DOWNKEY 125
-#  define LEFTKEY 123
-#  define RIGHTKEY 124
-# endif
-
+# define ESCAPEKEY 53
+# define UPKEY 126
+# define DOWNKEY 125
+# define LEFTKEY 123
+# define RIGHTKEY 124
 # define ZOOMPLUS 4
 # define KEYPLUS 69
 # define KEYMINUS 78
 # define ZOOMMINUS 5
 # define RIGHTCLICK 1
+# define TABCOLSIZE 4
 
 typedef struct s_fract	t_fract;
 typedef struct s_julia	t_julia;
 typedef struct s_mand	t_mand;
+typedef struct s_color	t_color;
 
 struct					s_julia
 {
@@ -92,9 +85,19 @@ struct					s_fract
 	int					mlximgbpp;
 	int					mlximgsize;
 	int					mlximgendian;
-	int					burn;
+	int					is_burn;
+	int					is_jul;
+	int					is_mand;
+	t_color				*col;
 	t_julia				julia;
 	t_mand				mand;
+};
+
+struct					s_color
+{
+	int					r;
+	int					g;
+	int					b;
 };
 
 int						ft_parser(int ac, char **av);
@@ -118,5 +121,5 @@ void					ft_julia_dezoom(int x, int y, t_julia *jul);
 void					ft_julia_zoom(int x, int y, t_julia *jul);
 void					ft_mandel_zoom(int x, int y, t_mand *mand);
 void					ft_mandel_dezoom(int x, int y, t_mand *mand);
-
+t_color					*ft_lstco();
 #endif
