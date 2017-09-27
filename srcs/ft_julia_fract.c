@@ -6,7 +6,7 @@
 /*   By: nvarela <nvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/29 18:04:56 by nvarela           #+#    #+#             */
-/*   Updated: 2017/09/27 18:03:19 by nvarela          ###   ########.fr       */
+/*   Updated: 2017/09/27 20:23:43 by nvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,18 @@
 static void		ft_julia_putpix(t_fract *fract, t_julia *jul, int x, int y)
 {
 	int			col_slot;
-	t_color		color;
+	t_color		*color;
+	t_color		back_col;
 
 	col_slot = (int)jul->i % TABCOLSIZE;
-	color = fract->col[col_slot];
+	color = ft_lstco(fract->color_type);
+	back_col = color[TABCOLSIZE];
 	if (jul->i == jul->iter_max)
-		ft_put_pixel_to_image(fract, x, y, 0xFFFF00);
+		ft_put_pixel_to_image(fract, x, y, ft_search_rgb(back_col.r,
+		back_col.g, back_col.b));
 	else
-		// ft_put_pixel_to_image(fract, x, y, ft_search_rgb(0, 0, jul->i
-		// * 255 / jul->iter_max));
-		ft_put_pixel_to_image(fract, x, y, ft_search_rgb(jul->i * color.r /
-		jul->iter_max, jul->i * color.g / jul->iter_max, jul->i * color.b /
+		ft_put_pixel_to_image(fract, x, y, ft_search_rgb(jul->i * color[col_slot].r /
+		jul->iter_max, jul->i * color[col_slot].g / jul->iter_max, jul->i * color[col_slot].b /
 			jul->iter_max));
 }
 

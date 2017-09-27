@@ -6,7 +6,7 @@
 /*   By: nvarela <nvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/31 15:06:25 by nvarela           #+#    #+#             */
-/*   Updated: 2017/09/27 18:01:51 by nvarela          ###   ########.fr       */
+/*   Updated: 2017/09/27 20:25:20 by nvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,20 @@
 
 static void		ft_mand_putpix(t_fract *fract, t_mand *mand, int x, int y)
 {
+	int			col_slot;
+	t_color		*color;
+	t_color		back_col;
+
+	col_slot = (int)mand->i % TABCOLSIZE;
+	color = ft_lstco(fract->color_type);
+	back_col = color[TABCOLSIZE];
 	if (mand->i == mand->iter_max)
-		ft_put_pixel_to_image(fract, x, y, 0xC5FCAC);
+		ft_put_pixel_to_image(fract, x, y, ft_search_rgb(back_col.r,
+		back_col.g, back_col.b));
 	else
-		ft_put_pixel_to_image(fract, x, y, ft_search_rgb(0, 0, mand->i
-			* 255 / mand->iter_max));
+		ft_put_pixel_to_image(fract, x, y, ft_search_rgb(mand->i * color[col_slot].r /
+		mand->iter_max, mand->i * color[col_slot].g / mand->iter_max, mand->i * color[col_slot].b /
+			mand->iter_max));
 }
 
 static void		ft_mand_cal_z_point(t_fract *fract, t_mand *mand, int x, int y)

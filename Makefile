@@ -22,6 +22,8 @@ SRC			= main.c					\
 			ft_julia_events.c			\
 			ft_key_fonction.c			\
 			ft_mandel_event.c			\
+			ft_event_key.c				\
+			ft_color_type.c				\
 
 OBJ			=	$(patsubst %.c,srcs/%.o,$(SRC))
 

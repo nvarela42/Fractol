@@ -6,7 +6,7 @@
 /*   By: nvarela <nvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/29 18:05:32 by nvarela           #+#    #+#             */
-/*   Updated: 2017/09/14 20:52:38 by nvarela          ###   ########.fr       */
+/*   Updated: 2017/09/27 20:19:46 by nvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,15 @@ int			ft_search_rgb(int r, int g, int b)
 	return ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
 }
 
-t_color 		*ft_lstco()
+t_color 		*ft_lstco(int type)
 {
 	t_color *col;
-
-	col = (t_color *)malloc(sizeof(t_color) * TABCOLSIZE);
-	col[0] = (t_color){255, 102, 0};
-	col[1] = (t_color){255, 204, 51};
-	col[2] = (t_color){255, 255, 153};
-	col[3] = (t_color){255, 0, 0};
+	col = (t_color *)malloc(sizeof(t_color) * (TABCOLSIZE + 1));
+	if (type == 0 || type == BASIC_COLTYPE)
+		col = ft_basic_color(col);
+	else if (type == COLTYPE_ONE)
+		col = ft_col_type_one(col);
+	else if (type == COLTYPE_TWO)
+		col = ft_col_type_two(col);
 	return (col);
 }

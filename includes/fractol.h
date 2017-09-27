@@ -6,7 +6,7 @@
 /*   By: nvarela <nvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/12 15:38:58 by nvarela           #+#    #+#             */
-/*   Updated: 2017/09/27 14:28:33 by nvarela          ###   ########.fr       */
+/*   Updated: 2017/09/27 20:14:55 by nvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@
 # define ZOOMMINUS 5
 # define RIGHTCLICK 1
 # define TABCOLSIZE 4
+# define RESETKEY 15
+# define BASIC_COLTYPE 82
+# define COLTYPE_ONE 83
+# define COLTYPE_TWO 84
 
 typedef struct s_fract	t_fract;
 typedef struct s_julia	t_julia;
@@ -88,6 +92,7 @@ struct					s_fract
 	int					is_burn;
 	int					is_jul;
 	int					is_mand;
+	int					color_type;
 	t_color				*col;
 	t_julia				julia;
 	t_mand				mand;
@@ -121,5 +126,13 @@ void					ft_julia_dezoom(int x, int y, t_julia *jul);
 void					ft_julia_zoom(int x, int y, t_julia *jul);
 void					ft_mandel_zoom(int x, int y, t_mand *mand);
 void					ft_mandel_dezoom(int x, int y, t_mand *mand);
-t_color					*ft_lstco();
+void					ft_resetkey(t_fract *tmp);
+void					ft_movekey(int key, t_fract *tmp);
+void					ft_zoomkey(int key, t_fract *tmp);
+t_color					*ft_lstco(int type);
+void					ft_color_type(int key, t_fract *tmp);
+t_color					*ft_basic_color();
+t_color					*ft_col_type_one();
+t_color					*ft_col_type_two();
+
 #endif
