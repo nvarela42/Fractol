@@ -6,7 +6,7 @@
 /*   By: nvarela <nvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/29 18:04:56 by nvarela           #+#    #+#             */
-/*   Updated: 2017/09/14 20:54:04 by nvarela          ###   ########.fr       */
+/*   Updated: 2017/09/27 18:03:19 by nvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ static void		ft_julia_putpix(t_fract *fract, t_julia *jul, int x, int y)
 	else
 		// ft_put_pixel_to_image(fract, x, y, ft_search_rgb(0, 0, jul->i
 		// * 255 / jul->iter_max));
-		ft_put_pixel_to_image(fract, x, y, ft_search_rgb(jul->i * color.r / jul->iter_max, jul->i * color.g / jul->iter_max, jul->i * color.b / jul->iter_max));
+		ft_put_pixel_to_image(fract, x, y, ft_search_rgb(jul->i * color.r /
+		jul->iter_max, jul->i * color.g / jul->iter_max, jul->i * color.b /
+			jul->iter_max));
 }
 
 static void		ft_julia_cal_z_point(t_fract *fract, t_julia *jul, int x, int y)
@@ -34,14 +36,14 @@ static void		ft_julia_cal_z_point(t_fract *fract, t_julia *jul, int x, int y)
 
 	tmp = jul->z_r;
 	jul->z_r = jul->z_r * jul->z_r - jul->z_i * jul->z_i + jul->c_r;
-	jul->z_i = 2 * jul->z_i * tmp + jul->c_i;
+	jul->z_i = (jul->z_i + jul->z_i) * tmp + jul->c_i;
 	jul->i = jul->i + 1;
 	stock = jul->z_r * jul->z_r + jul->z_i * jul->z_i;
 	while (stock < 4 && jul->i < jul->iter_max)
 	{
 		tmp = jul->z_r;
 		jul->z_r = jul->z_r * jul->z_r - jul->z_i * jul->z_i + jul->c_r;
-		jul->z_i = 2 * jul->z_i * tmp + jul->c_i;
+		jul->z_i = (jul->z_i + jul->z_i) * tmp + jul->c_i;
 		jul->i = jul->i + 1;
 		stock = jul->z_r * jul->z_r + jul->z_i * jul->z_i;
 	}
@@ -88,8 +90,8 @@ void			ft_julia_image(t_fract *fract)
 
 void			ft_julia_fract(t_fract *fract)
 {
-	fract->x_sizewin = 600;
-	fract->y_sizewin = 600;
+	fract->x_sizewin = 400;
+	fract->y_sizewin = 400;
 	fract->julia.x_one = -1.5;
 	fract->julia.x_two = 1.5;
 	fract->julia.y_one = -1.5;

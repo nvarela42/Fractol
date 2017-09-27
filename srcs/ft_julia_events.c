@@ -6,7 +6,7 @@
 /*   By: nvarela <nvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/12 15:39:57 by nvarela           #+#    #+#             */
-/*   Updated: 2017/09/14 19:34:38 by nvarela          ###   ########.fr       */
+/*   Updated: 2017/09/27 17:52:52 by nvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,59 +14,33 @@
 
 void			ft_julia_dezoom(int x, int y, t_julia *jul)
 {
-	jul->zoom *= 0.97;
-	if (x >= 0 && x <= 200 && y >= 180 && y <= 320)
-		jul->x_one += 0.03;
-	if (x <= 500 && x >= 400 && y >= 220 && y <= 350)
-		jul->x_one -= 0.03;
-	if (x <= 250 && y < 180)
+	double            converted_i;
+	double            converted_r;
+
+	if (y > 0)
 	{
-		jul->x_one += 0.03;
-		jul->y_one += 0.03;
-	}
-	else if (x > 250 && y < 180)
-	{
-		jul->x_one -= 0.03;
-		jul->y_one += 0.03;
-	}
-	else if (x > 250 && y > 320)
-	{
-		jul->x_one -= 0.03;
-		jul->y_one -= 0.03;
-	}
-	else if (x <= 250 && y > 320)
-	{
-		jul->x_one += 0.03;
-		jul->y_one -= 0.03;
+		converted_r = (x / jul->zoom) + jul->x_one;
+		converted_i = (y / jul->zoom) + jul->y_one;
+		jul->zoom /= 1.1;
+		jul->iter_max -= 1;
+		jul->x_one = converted_r - (x / jul->zoom);
+		jul->y_one = converted_i - (y / jul->zoom);
 	}
 }
 
 void			ft_julia_zoom(int x, int y, t_julia *jul)
 {
-	jul->zoom *= 1.05;
-	if (x >= 0 && x <= 200 && y >= 180 && y <= 320)
-		jul->x_one -= 0.03;
-	if (x <= 500 && x >= 400 && y >= 220 && y <= 350)
-		jul->x_one += 0.03;
-	if (x <= 250 && y < 180)
+	double            converted_i;
+	double            converted_r;
+
+	if (y > 0)
 	{
-		jul->x_one -= 0.03;
-		jul->y_one -= 0.03;
-	}
-	else if (x > 250 && y < 180)
-	{
-		jul->x_one += 0.03;
-		jul->y_one -= 0.03;
-	}
-	else if (x > 250 && y > 320)
-	{
-		jul->x_one += 0.03;
-		jul->y_one += 0.03;
-	}
-	else if (x <= 250 && y > 320)
-	{
-		jul->x_one -= 0.03;
-		jul->y_one += 0.03;
+		converted_r = (x / jul->zoom) + jul->x_one;
+		converted_i = (y / jul->zoom) + jul->y_one;
+		jul->zoom *= 1.1;
+		jul->iter_max += 1;
+		jul->x_one = converted_r - (x / jul->zoom);
+		jul->y_one = converted_i - (y / jul->zoom);
 	}
 }
 

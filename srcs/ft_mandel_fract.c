@@ -6,7 +6,7 @@
 /*   By: nvarela <nvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/31 15:06:25 by nvarela           #+#    #+#             */
-/*   Updated: 2017/09/14 18:17:34 by nvarela          ###   ########.fr       */
+/*   Updated: 2017/09/27 18:01:51 by nvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void		ft_mand_cal_z_point(t_fract *fract, t_mand *mand, int x, int y)
 		mand->z_r = mand->z_r * mand->z_r - mand->z_i * mand->z_i + mand->c_r;
 		if (fract->is_burn == 1)
 			mand->z_r = mand->z_r < 0 ? mand->z_r * -1 : mand->z_r;
-		mand->z_i = 2 * mand->z_i * tmp + mand->c_i;
+		mand->z_i = (mand->z_i + mand->z_i) * tmp + mand->c_i;
 		if (fract->is_burn == 1)
 			mand->z_i = mand->z_i < 0 ? mand->z_i * -1 : mand->z_i;
 		mand->i = mand->i + 1;
@@ -87,8 +87,8 @@ void			ft_mandel_image(t_fract *fract)
 
 void			ft_mandel_fract(t_fract *fract)
 {
-	fract->x_sizewin = 600;
-	fract->y_sizewin = 600;
+	fract->x_sizewin = 400;
+	fract->y_sizewin = 400;
 	fract->mand.x_one = -2.1;
 	fract->mand.x_two = 0.6;
 	fract->mand.y_one = -1.2;

@@ -6,7 +6,7 @@
 /*   By: nvarela <nvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/12 15:40:23 by nvarela           #+#    #+#             */
-/*   Updated: 2017/09/14 19:29:41 by nvarela          ###   ########.fr       */
+/*   Updated: 2017/09/27 17:47:02 by nvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,59 +14,33 @@
 
 void			ft_mandel_dezoom(int x, int y, t_mand *mand)
 {
-	mand->zoom *= 0.60;
-	if (x >= 0 && x <= 200 && y >= 180 && y <= 320)
-		mand->x_one += 0.05;
-	if (x <= 500 && x >= 400 && y >= 220 && y <= 350)
-		mand->x_one -= 0.05;
-	if (x <= 250 && y < 180)
+	double            converted_i;
+	double            converted_r;
+
+	if (y > 0)
 	{
-		mand->x_one += 0.05;
-		mand->y_one += 0.05;
-	}
-	else if (x > 250 && y < 180)
-	{
-		mand->x_one -= 0.05;
-		mand->y_one += 0.05;
-	}
-	else if (x > 250 && y > 320)
-	{
-		mand->x_one -= 0.05;
-		mand->y_one -= 0.05;
-	}
-	else if (x <= 250 && y > 320)
-	{
-		mand->x_one += 0.05;
-		mand->y_one -= 0.05;
+		converted_r = (x / mand->zoom) + mand->x_one;
+		converted_i = (y / mand->zoom) + mand->y_one;
+		mand->zoom /= 1.1;
+		mand->iter_max -= 1;
+		mand->x_one = converted_r - (x / mand->zoom);
+		mand->y_one = converted_i - (y / mand->zoom);
 	}
 }
 
 void			ft_mandel_zoom(int x, int y, t_mand *mand)
 {
-	mand->zoom *= 2.05;
-	if (x >= 0 && x <= 200 && y >= 180 && y <= 320)
-		mand->x_one -= 0.05;
-	if (x <= 500 && x >= 400 && y >= 220 && y <= 350)
-		mand->x_one += 0.05;
-	if (x <= 250 && y < 180)
+	double            converted_i;
+	double            converted_r;
+
+	if (y > 0)
 	{
-		mand->x_one -= 0.05;
-		mand->y_one -= 0.05;
-	}
-	else if (x > 250 && y < 180)
-	{
-		mand->x_one += 0.05;
-		mand->y_one -= 0.05;
-	}
-	else if (x > 250 && y > 320)
-	{
-		mand->x_one += 0.05;
-		mand->y_one += 0.05;
-	}
-	else if (x <= 250 && y > 320)
-	{
-		mand->x_one -= 0.05;
-		mand->y_one += 0.05;
+		converted_r = (x / mand->zoom) + mand->x_one;
+		converted_i = (y / mand->zoom) + mand->y_one;
+		mand->zoom *= 1.1;
+		mand->iter_max += 1;
+		mand->x_one = converted_r - (x / mand->zoom);
+		mand->y_one = converted_i - (y / mand->zoom);
 	}
 }
 
