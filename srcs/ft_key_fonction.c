@@ -6,7 +6,7 @@
 /*   By: nvarela <nvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/12 15:40:11 by nvarela           #+#    #+#             */
-/*   Updated: 2017/09/28 15:39:07 by nvarela          ###   ########.fr       */
+/*   Updated: 2017/09/28 18:47:13 by nvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static int		ft_clear_image_and_win(t_fract *tmp)
 int				quit_cross(t_fract *fract)
 {
 	(void)fract;
-	// ft_free_struct(&fract);
 	exit(EXIT_SUCCESS);
 	return (0);
 }

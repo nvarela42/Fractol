@@ -6,7 +6,7 @@
 /*   By: nvarela <nvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/29 18:05:54 by nvarela           #+#    #+#             */
-/*   Updated: 2017/09/28 15:37:56 by nvarela          ###   ########.fr       */
+/*   Updated: 2017/09/28 18:18:43 by nvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void		ft_start_fractol(t_fract *fract, char **av)
 {
+	ft_usage_on_console();
 	if (ft_strcmp(av[1], "julia") == 0)
 	{
 		fract->is_jul = 1;

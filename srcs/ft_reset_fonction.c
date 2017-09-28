@@ -6,7 +6,7 @@
 /*   By: nvarela <nvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/28 11:33:42 by nvarela           #+#    #+#             */
-/*   Updated: 2017/09/28 17:35:56 by nvarela          ###   ########.fr       */
+/*   Updated: 2017/09/28 17:40:14 by nvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void			ft_reset_julia(t_fract *tmp)
 
 void			ft_reset_mandel(t_fract *tmp)
 {
-	tmp->type.x_one = -2.3;
+	tmp->type.x_one = -2.5;
 	tmp->type.x_two = 0.6;
 	tmp->type.y_one = -1.8;
 	tmp->type.y_two = 1.2;

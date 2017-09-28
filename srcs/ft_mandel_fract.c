@@ -6,7 +6,7 @@
 /*   By: nvarela <nvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/31 15:06:25 by nvarela           #+#    #+#             */
-/*   Updated: 2017/09/28 16:57:28 by nvarela          ###   ########.fr       */
+/*   Updated: 2017/09/28 17:40:04 by nvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void			ft_mand_search_z_point(t_fract *fract, t_type *mand)
 
 void			ft_mandel_fract(t_fract *fract)
 {
-	fract->type.x_one = -2.3;
+	fract->type.x_one = -2.5;
 	fract->type.x_two = 0.6;
 	fract->type.y_one = -1.8;
 	fract->type.y_two = 1.2;

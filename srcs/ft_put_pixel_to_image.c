@@ -6,7 +6,7 @@
 /*   By: nvarela <nvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/29 18:05:32 by nvarela           #+#    #+#             */
-/*   Updated: 2017/09/28 15:46:49 by nvarela          ###   ########.fr       */
+/*   Updated: 2017/09/28 18:55:37 by nvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,4 @@ void		ft_put_image(t_fract *fract, t_type *jul, int x, int y)
 		ft_put_pixel_to_image(fract, x, y, ft_search_rgb(jul->i *
 		color[col_slot].r / jul->iter_max, jul->i * color[col_slot].g /
 		jul->iter_max, jul->i * color[col_slot].b / jul->iter_max));
-
 }

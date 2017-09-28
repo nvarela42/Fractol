@@ -26,6 +26,7 @@ SRC			= main.c					\
 			ft_reset_fonction.c			\
 			ft_create_image.c			\
 			ft_free_struct.c			\
+			ft_usage_on_consol.c		\
 
 OBJ			=	$(patsubst %.c,srcs/%.o,$(SRC))
 

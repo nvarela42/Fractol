@@ -6,7 +6,7 @@
 /*   By: nvarela <nvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/12 15:38:58 by nvarela           #+#    #+#             */
-/*   Updated: 2017/09/28 15:41:47 by nvarela          ###   ########.fr       */
+/*   Updated: 2017/09/28 18:19:00 by nvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,6 @@ void					ft_put_image(t_fract *fract, t_type *jul, int x, int y);
 void					ft_create_image(t_fract *fract);
 void					ft_free_struct(t_fract **fract);
 void					ft_usage_on_image(t_fract *fract);
+void					ft_usage_on_console(void);
 
 #endif
