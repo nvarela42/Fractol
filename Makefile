@@ -19,15 +19,17 @@ SRC			= main.c					\
 			ft_julia_fract.c			\
 			ft_put_pixel_to_image.c		\
 			ft_mandel_fract.c			\
-			ft_julia_events.c			\
+			ft_zoom_and_mouse_events.c	\
 			ft_key_fonction.c			\
-			ft_mandel_event.c			\
 			ft_event_key.c				\
 			ft_color_type.c				\
+			ft_reset_fonction.c			\
+			ft_create_image.c			\
+			ft_free_struct.c			\
 
 OBJ			=	$(patsubst %.c,srcs/%.o,$(SRC))
 
-LFLAGS		=	-L$(DIR) -l$(LNAME)
+LFLAGS		=	-O3 -L$(DIR) -l$(LNAME)
 
 WFLAGS 		=	-Wall -Wextra -Werror
 

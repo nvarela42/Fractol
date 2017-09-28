@@ -6,31 +6,13 @@
 /*   By: nvarela <nvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/29 18:04:56 by nvarela           #+#    #+#             */
-/*   Updated: 2017/09/27 20:23:43 by nvarela          ###   ########.fr       */
+/*   Updated: 2017/09/28 16:56:56 by nvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static void		ft_julia_putpix(t_fract *fract, t_julia *jul, int x, int y)
-{
-	int			col_slot;
-	t_color		*color;
-	t_color		back_col;
-
-	col_slot = (int)jul->i % TABCOLSIZE;
-	color = ft_lstco(fract->color_type);
-	back_col = color[TABCOLSIZE];
-	if (jul->i == jul->iter_max)
-		ft_put_pixel_to_image(fract, x, y, ft_search_rgb(back_col.r,
-		back_col.g, back_col.b));
-	else
-		ft_put_pixel_to_image(fract, x, y, ft_search_rgb(jul->i * color[col_slot].r /
-		jul->iter_max, jul->i * color[col_slot].g / jul->iter_max, jul->i * color[col_slot].b /
-			jul->iter_max));
-}
-
-static void		ft_julia_cal_z_point(t_fract *fract, t_julia *jul, int x, int y)
+static void		ft_julia_cal_z_point(t_fract *fract, t_type *jul, int x, int y)
 {
 	double		tmp;
 	double		stock;
@@ -48,19 +30,19 @@ static void		ft_julia_cal_z_point(t_fract *fract, t_julia *jul, int x, int y)
 		jul->i = jul->i + 1;
 		stock = jul->z_r * jul->z_r + jul->z_i * jul->z_i;
 	}
-	ft_julia_putpix(fract, jul, x, y);
+	ft_put_image(fract, jul, x, y);
 }
 
-static void		ft_julia_search_z_point(t_fract *fract, t_julia *jul)
+void			ft_julia_search_z_point(t_fract *fract, t_type *jul)
 {
 	int			x;
 	int			y;
 
 	x = 0;
-	while (x < jul->x_image)
+	while (x < fract->x_sizewin)
 	{
 		y = 0;
-		while (y < jul->y_image)
+		while (y < fract->y_sizewin)
 		{
 			jul->i = 0;
 			jul->z_r = x / jul->zoom + jul->x_one;
@@ -76,40 +58,25 @@ static void		ft_julia_search_z_point(t_fract *fract, t_julia *jul)
 	}
 }
 
-void			ft_julia_image(t_fract *fract)
-{
-	fract->julia.x_image = (fract->julia.x_two - fract->julia.x_one)
-		* fract->julia.zoom;
-	fract->julia.y_image = (fract->julia.y_two - fract->julia.y_one)
-		* fract->julia.zoom;
-	fract->image = mlx_new_image(fract->mlx, fract->x_sizewin,
-		fract->y_sizewin);
-	fract->imgchar = mlx_get_data_addr(fract->image, &(fract->mlximgbpp),
-		&(fract->mlximgsize), &(fract->mlximgendian));
-	ft_julia_search_z_point(fract, &(fract->julia));
-}
-
 void			ft_julia_fract(t_fract *fract)
 {
-	fract->x_sizewin = 400;
-	fract->y_sizewin = 400;
-	fract->julia.x_one = -1.5;
-	fract->julia.x_two = 1.5;
-	fract->julia.y_one = -1.5;
-	fract->julia.y_two = 1.5;
-	fract->julia.zoom = 100;
-	fract->julia.iter_max = 150;
-	fract->julia.c_r = 0.285;
-	fract->julia.c_i = 0.01;
-	fract->julia.block = 0;
+	fract->type.x_one = -1.8;
+	fract->type.x_two = 1.5;
+	fract->type.y_one = -1.8;
+	fract->type.y_two = 1.5;
+	fract->type.zoom = 100;
+	fract->type.iter_max = 50;
+	fract->type.c_r = 0.285;
+	fract->type.c_i = 0.01;
+	fract->type.block = 0;
 	fract->mlx = mlx_init();
 	fract->win = mlx_new_window(fract->mlx, fract->x_sizewin, fract->y_sizewin,
 	"FRACTOL");
-	ft_julia_image(fract);
+	ft_create_image(fract);
 	mlx_put_image_to_window(fract->mlx, fract->win, fract->image, 0, 0);
 	mlx_hook(fract->win, 17, 0, quit_cross, fract);
 	mlx_hook(fract->win, 6, (1L << 6), ft_julia_mouse_position, fract);
 	mlx_key_hook(fract->win, ft_key_fonction, fract);
-	mlx_mouse_hook(fract->win, ft_julia_mouse_button, fract);
+	mlx_mouse_hook(fract->win, ft_mouse_button, fract);
 	mlx_loop(fract->mlx);
 }

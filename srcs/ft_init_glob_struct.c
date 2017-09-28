@@ -6,7 +6,7 @@
 /*   By: nvarela <nvarela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/29 18:04:38 by nvarela           #+#    #+#             */
-/*   Updated: 2017/09/27 20:01:55 by nvarela          ###   ########.fr       */
+/*   Updated: 2017/09/28 16:46:47 by nvarela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void			ft_fill_struct(t_fract *fract)
 {
-	fract->x_sizewin = 0;
-	fract->y_sizewin = 0;
+	fract->x_sizewin = 400;
+	fract->y_sizewin = 400;
 	fract->mlx = NULL;
 	fract->win = NULL;
 	fract->image = NULL;
